@@ -23,8 +23,24 @@ open index.html
 | E | Hide or show the corners. Hide them before you project |
 | F | Full screen |
 
-To make it yours, change `drawArt()` in `sketch.js`. Draw into `g` the way you draw into a normal
-p5.js canvas.
+## Make it yours
+
+Open `art.js`. It is the only file you need to change. `drawArt(g)` draws one frame of your art.
+Draw into `g` the way you draw into a normal p5.js canvas: `g.circle(...)`, not `circle(...)`.
+
+Want a head start? The `examples/` folder has four art files:
+
+| File | What it does |
+|---|---|
+| `examples/stripes.js` | Stripes slide across the surface. Good for showing edges |
+| `examples/noise.js` | A slow, living color field |
+| `examples/text.js` | A word that pulses. Change it to your own word |
+| `examples/particles.js` | Drifting dots with trails. Shows how to use `setupArt()` |
+
+To use one, copy its code into `art.js`. Or open `index.html` and change `art.js` to the example's
+path.
+
+`setupArt(g)` is optional. It runs once at the start. Use it for anything you create only one time.
 
 ## What the template does
 
@@ -40,8 +56,10 @@ version.
 ## Files
 
 - `index.html`: loads p5.js and the sketch.
-- `sketch.js`: the template. `drawArt()` is your sketch. The rest pins it onto the surface.
-  `GRID` splits the surface into small cells so the image does not bend along the diagonal.
+- `art.js`: your art. Start here.
+- `examples/`: four art files to copy from.
+- `sketch.js`: the mapping engine. You do not need to change it. `GRID` splits the surface into
+  small cells so the image does not bend along the diagonal.
 - `lib/p5.min.js`: p5.js 1.11.13, saved in the repo for offline use.
 
 ## License

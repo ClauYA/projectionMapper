@@ -1,5 +1,5 @@
-// PATCH 003: Projection Mapping Lab — starter template.
-// drawArt() is your sketch. Everything below it pins your sketch onto a real surface.
+// PATCH 003: Projection Mapping Lab — the mapping engine.
+// You do not need to change this file. Your art lives in art.js. This file pins it onto a real surface.
 
 const GRID = 10;    // The surface is split into GRID x GRID cells so the image does not bend along the diagonal
 const HANDLE = 16;  // Corner handle size, in pixels
@@ -20,16 +20,7 @@ function setup() {
     createVector(width * 0.7, height * 0.7),
     createVector(width * 0.3, height * 0.7),
   ];
-}
-
-// Your sketch. Draw into g the way you would draw into a normal p5.js canvas.
-function drawArt(g) {
-  g.background(20);
-  g.noStroke();
-  for (let i = 0; i < 8; i++) {
-    g.fill((frameCount * 2 + i * 32) % 255, 90, 200);
-    g.circle(g.width / 2, g.height / 2, g.width - i * 90);
-  }
+  if (typeof setupArt === 'function') setupArt(art); // setupArt() is optional. Your art file only needs drawArt()
 }
 
 function draw() {
