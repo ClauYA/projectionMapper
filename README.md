@@ -1,8 +1,9 @@
-# PATCH 003: Projection Mapping Lab
+# projectionMapper
 
-The starter template for PATCH 003, a PhilaCon Valley lab at Pennovation Works on
-Wednesday, September 30, 2026. You build a p5.js sketch on your laptop. Then you map it onto a
-real object with a projector.
+A projection mapping starter template in p5.js, by PhilaCon Valley. You build a p5.js sketch on
+your laptop. Then you map it onto a real object with a projector.
+
+Built for PATCH 003: Projection Mapping Lab, at Pennovation Works on Wednesday, September 30, 2026.
 
 ![The template on a laptop: art stretched across four pink corner handles](docs/preview.jpg)
 
@@ -18,8 +19,8 @@ Unzip the folder and open `index.html` in Chrome. That folder is yours to keep.
 **With git:**
 
 ```bash
-git clone https://github.com/philaconvalley/patch-003-projection-mapping.git
-cd patch-003-projection-mapping
+git clone https://github.com/philaconvalley/projectionMapper.git
+cd projectionMapper
 open index.html
 ```
 

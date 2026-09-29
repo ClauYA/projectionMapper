@@ -1,4 +1,4 @@
-// PATCH 003: Projection Mapping Lab — the mapping engine.
+// projectionMapper — the mapping engine.
 // You do not need to change this file. Your art lives in art.js. This file pins it onto a real surface.
 
 const GRID = 10;    // The surface is split into GRID x GRID cells so the image does not bend along the diagonal
