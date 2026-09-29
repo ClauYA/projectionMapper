@@ -44,14 +44,16 @@ path.
 
 ## What the template does
 
-The floor is three features. The template ships with all three, or the lab uses a smaller
-version.
+1. **Corners.** Drag the four pink corners onto the corners of your object.
+2. **Warp.** Your art stretches to fit those four corners.
+3. **Move.** Drag inside the shape to move it without changing it.
+4. **Preview.** You see the result on your laptop before you get projector time.
 
-1. **Corners.** Drag the four corners of your sketch onto the corners of the object.
-2. **Warp.** The sketch stretches to fit those four corners.
-3. **Preview.** You see the result on your laptop before you get projector time.
+**Coming next:** more than one surface, so you can map each panel of a board or each face of a
+box. After that, saving your corner positions so a reload does not reset them.
 
-**Calibration mode** comes after those three. If time runs out, it gets cut.
+**Known limit:** the corners do not follow the window. If you resize the window or leave full
+screen, set the corners again.
 
 ## Files
 
