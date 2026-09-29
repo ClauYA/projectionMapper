@@ -7,6 +7,8 @@ const HANDLE = 16;  // Corner handle size, in pixels
 let art;            // Offscreen buffer. Your sketch draws here, not on the main canvas
 let corners;        // Four points: top-left, top-right, bottom-right, bottom-left
 let dragging = -1;  // Index of the corner being dragged, or -1 for none
+let moving = false; // true while you drag inside the surface to move all four corners together
+let lastMouse;      // Where the mouse was at the last drag event, so each event moves the surface only its own distance
 let editing = true; // true shows the handles; press E to hide them for the projector
 
 function setup() {
@@ -81,14 +83,34 @@ function drawHandles() {
 function mousePressed() {
   if (!editing) return;
   dragging = corners.findIndex((p) => dist(mouseX, mouseY, p.x, p.y) < HANDLE);
+  moving = dragging < 0 && insideQuad(mouseX, mouseY, corners); // No corner hit? Then check for a click inside the surface
+  lastMouse = createVector(mouseX, mouseY);
 }
 
 function mouseDragged() {
   if (dragging >= 0) corners[dragging].set(mouseX, mouseY);
+  if (moving) {
+    const step = createVector(mouseX, mouseY).sub(lastMouse); // How far the mouse moved since the last drag event
+    for (const p of corners) p.add(step);
+  }
+  lastMouse = createVector(mouseX, mouseY);
 }
 
 function mouseReleased() {
   dragging = -1;
+  moving = false;
+}
+
+// Is (x, y) inside the shape? Count how many edges a line from the point to the right crosses. Odd means inside.
+function insideQuad(x, y, c) {
+  let inside = false;
+  for (let i = 0, j = c.length - 1; i < c.length; j = i++) {
+    const crosses = c[i].y > y !== c[j].y > y;
+    if (crosses && x < ((c[j].x - c[i].x) * (y - c[i].y)) / (c[j].y - c[i].y) + c[i].x) {
+      inside = !inside;
+    }
+  }
+  return inside;
 }
 
 function windowResized() {

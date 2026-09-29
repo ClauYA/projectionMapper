@@ -19,6 +19,7 @@ open index.html
 | Key or mouse | Action |
 |---|---|
 | Drag a pink corner | Move that corner onto the corner of your surface |
+| Drag inside the shape | Move the whole shape without changing it |
 | E | Hide or show the corners. Hide them before you project |
 | F | Full screen |
 
