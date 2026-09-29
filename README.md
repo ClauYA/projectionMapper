@@ -55,7 +55,8 @@ version.
 
 ## Files
 
-- `index.html`: loads p5.js and the sketch.
+- `index.html`: the page. It loads the styles and the scripts, and holds no code of its own.
+- `style.css`: the page styles. A black, full-window canvas with no scroll bars.
 - `art.js`: your art. Start here.
 - `examples/`: four art files to copy from.
 - `sketch.js`: the mapping engine. You do not need to change it. `GRID` splits the surface into

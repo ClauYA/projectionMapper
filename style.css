@@ -1,0 +1,13 @@
+/* The canvas fills the whole window with no scroll bars, on a black page.
+   Black matters: anything not black shows up as light on the wall. */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: #000;
+}
+
+canvas {
+  display: block;
+}
