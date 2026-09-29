@@ -10,6 +10,11 @@ real object with a projector.
 
 No build step. p5.js is in `lib/`, so it works with no Wi-Fi.
 
+**No git? Download it.** On this page, click the green **Code** button, then **Download ZIP**.
+Unzip the folder and open `index.html` in Chrome. That folder is yours to keep.
+
+**With git:**
+
 ```bash
 git clone https://github.com/philaconvalley/patch-003-projection-mapping.git
 cd patch-003-projection-mapping
