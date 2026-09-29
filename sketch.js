@@ -1,12 +1,94 @@
-// PATCH 003: Projection Mapping Lab — starter sketch.
-// Blank on purpose. The template gets built here: corners, warp, preview.
+// PATCH 003: Projection Mapping Lab — starter template.
+// drawArt() is your sketch. Everything below it pins your sketch onto a real surface.
+
+const GRID = 10;    // The surface is split into GRID x GRID cells so the image does not bend along the diagonal
+const HANDLE = 16;  // Corner handle size, in pixels
+
+let art;            // Offscreen buffer. Your sketch draws here, not on the main canvas
+let corners;        // Four points: top-left, top-right, bottom-right, bottom-left
+let dragging = -1;  // Index of the corner being dragged, or -1 for none
+let editing = true; // true shows the handles; press E to hide them for the projector
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  createCanvas(windowWidth, windowHeight, WEBGL);
+  art = createGraphics(800, 600);
+  corners = [
+    createVector(width * 0.3, height * 0.3),
+    createVector(width * 0.7, height * 0.3),
+    createVector(width * 0.7, height * 0.7),
+    createVector(width * 0.3, height * 0.7),
+  ];
+}
+
+// Your sketch. Draw into g the way you would draw into a normal p5.js canvas.
+function drawArt(g) {
+  g.background(20);
+  g.noStroke();
+  for (let i = 0; i < 8; i++) {
+    g.fill((frameCount * 2 + i * 32) % 255, 90, 200);
+    g.circle(g.width / 2, g.height / 2, g.width - i * 90);
+  }
 }
 
 function draw() {
   background(0);
+  drawArt(art);
+  translate(-width / 2, -height / 2); // WEBGL puts (0, 0) in the center. Move it to the top-left like 2D mode
+  drawWarped(art, corners);
+  if (editing) drawHandles();
+}
+
+// Stretch img across the four corners, one row of small cells at a time.
+function drawWarped(img, c) {
+  noStroke();
+  textureMode(NORMAL);
+  texture(img);
+  for (let row = 0; row < GRID; row++) {
+    beginShape(TRIANGLE_STRIP);
+    for (let col = 0; col <= GRID; col++) {
+      const u = col / GRID;
+      for (const v of [row / GRID, (row + 1) / GRID]) {
+        const p = pointAt(c, u, v);
+        vertex(p.x, p.y, 0, u, v);
+      }
+    }
+    endShape();
+  }
+}
+
+// Blend the four corners. u runs left to right, v runs top to bottom, both from 0 to 1.
+function pointAt(c, u, v) {
+  const top = p5.Vector.lerp(c[0], c[1], u);
+  const bottom = p5.Vector.lerp(c[3], c[2], u);
+  return p5.Vector.lerp(top, bottom, v);
+}
+
+function drawHandles() {
+  push();
+  translate(0, 0, 1); // Lift the handles just above the image so the image never hides them
+  stroke(255, 0, 255);
+  strokeWeight(2);
+  noFill();
+  beginShape();
+  for (const p of corners) vertex(p.x, p.y);
+  endShape(CLOSE);
+  noStroke();
+  fill(255, 0, 255);
+  for (const p of corners) circle(p.x, p.y, HANDLE);
+  pop();
+}
+
+function mousePressed() {
+  if (!editing) return;
+  dragging = corners.findIndex((p) => dist(mouseX, mouseY, p.x, p.y) < HANDLE);
+}
+
+function mouseDragged() {
+  if (dragging >= 0) corners[dragging].set(mouseX, mouseY);
+}
+
+function mouseReleased() {
+  dragging = -1;
 }
 
 function windowResized() {
@@ -16,5 +98,9 @@ function windowResized() {
 function keyPressed() {
   if (key === 'f' || key === 'F') {
     fullscreen(!fullscreen());
+  }
+  if (key === 'e' || key === 'E') {
+    editing = !editing;
+    editing ? cursor() : noCursor();
   }
 }

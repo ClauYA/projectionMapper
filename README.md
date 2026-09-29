@@ -16,9 +16,14 @@ cd patch-003-projection-mapping
 open index.html
 ```
 
-| Key | Action |
+| Key or mouse | Action |
 |---|---|
+| Drag a pink corner | Move that corner onto the corner of your surface |
+| E | Hide or show the corners. Hide them before you project |
 | F | Full screen |
+
+To make it yours, change `drawArt()` in `sketch.js`. Draw into `g` the way you draw into a normal
+p5.js canvas.
 
 ## What the template does
 
@@ -34,7 +39,8 @@ version.
 ## Files
 
 - `index.html`: loads p5.js and the sketch.
-- `sketch.js`: the sketch. This is where the template gets built.
+- `sketch.js`: the template. `drawArt()` is your sketch. The rest pins it onto the surface.
+  `GRID` splits the surface into small cells so the image does not bend along the diagonal.
 - `lib/p5.min.js`: p5.js 1.11.13, saved in the repo for offline use.
 
 ## License
