@@ -4,6 +4,8 @@ The starter template for PATCH 003, a PhilaCon Valley lab at Pennovation Works o
 Wednesday, September 30, 2026. You build a p5.js sketch on your laptop. Then you map it onto a
 real object with a projector.
 
+![The template on a laptop: art stretched across four pink corner handles](docs/preview.jpg)
+
 **Status:** in progress. Waskar and Jay are building the template before the lab.
 
 ## Run it on your machine
@@ -28,7 +30,30 @@ open index.html
 | E | Hide or show the corners. Hide them before you project |
 | F | Full screen |
 
-## Make it yours
+## Run it in your browser, with nothing to install
+
+A version in the [p5.js Web Editor](https://editor.p5js.org) is coming before the lab. The link
+goes here. You can edit and run it without an account. To save your work, make a free p5.js account
+first.
+
+## Put it on a projector
+
+1. **Connect the projector** to your laptop. Most laptops need a USB-C to HDMI adapter.
+2. **Extend your display, do not mirror it.** On a Mac: System Settings, then Displays. If the two
+   screens show the same thing, turn mirroring off.
+3. **Open `index.html` in Chrome.**
+4. **Drag the Chrome window onto the projector's screen.** It sits off one edge of your laptop
+   screen.
+5. **Click the page, then press F** for full screen.
+6. **Drag the four pink corners onto the corners of your object.** Watch the wall, not your laptop.
+7. **Press E** to hide the corners. Your art now sits only on the object.
+
+Set the corners after you go full screen. If you leave full screen, set them again.
+
+**Tip:** the room has to be dark. Anything that is not black on your screen shows up as light on
+the wall.
+
+
 
 Open `art.js`. It is the only file you need to change. `drawArt(g)` draws one frame of your art.
 Draw into `g` the way you draw into a normal p5.js canvas: `g.circle(...)`, not `circle(...)`.
