@@ -4,19 +4,19 @@
 let dots = [];
 
 function setupArt(g) {
-  for (let i = 0; i < 150; i++) {
+  for (let i = 0; i < 300; i++) {
     dots.push({
       x: random(g.width),
       y: random(g.height),
-      dx: random(-2, 2),     // Speed left or right
-      dy: random(-2, 2),     // Speed up or down
-      size: random(4, 14),
+      dx: random(-5, 5),     // Speed left or right
+      dy: random(-4, 4),     // Speed up or down
+      size: random(4, 40),
     });
   }
 }
 
 function drawArt(g) {
-  g.background(0, 40);       // A see-through background leaves short trails behind each dot
+  g.background(0, 80);       // A see-through background leaves short trails behind each dot
   g.noStroke();
   g.fill(255);
   for (const d of dots) {
